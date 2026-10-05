@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: qelviora-technologies
+    runtime: node
+    plan: starter
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 22.15.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: APP_URL
+        sync: false
+      - key: QELVIORA_DATABASE_PATH
+        value: /var/data/qelviora.sqlite
+      - key: UPLOAD_DIRECTORY
+        value: /var/data/uploads
+      - key: EMAIL_SERVER
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+    disk:
+      name: qelviora-data
+      mountPath: /var/data
+      sizeGB: 1

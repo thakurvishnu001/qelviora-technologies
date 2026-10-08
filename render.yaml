@@ -2,7 +2,7 @@ services:
   - type: web
     name: qelviora-technologies
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm run build
     startCommand: npm start
     healthCheckPath: /healthz
@@ -11,19 +11,15 @@ services:
         value: 22.15.0
       - key: NODE_ENV
         value: production
-      - key: HOST
-        value: 0.0.0.0
       - key: APP_URL
         sync: false
-      - key: QELVIORA_DATABASE_PATH
-        value: /var/data/qelviora.sqlite
-      - key: UPLOAD_DIRECTORY
-        value: /var/data/uploads
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
       - key: EMAIL_SERVER
         sync: false
       - key: EMAIL_FROM
         sync: false
-    disk:
-      name: qelviora-data
-      mountPath: /var/data
-      sizeGB: 1
+      - key: ADMIN_BOOTSTRAP_EMAIL
+        sync: false

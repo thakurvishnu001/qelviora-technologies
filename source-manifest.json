@@ -1,4 +1,4 @@
 {
-  "sha256": "cb6550c80baeb2b87f9c75cdab1f8e56a3138f34cea17662fecfe96aa3c3e27f",
-  "description": "Complete Qelviora source, excludes private runtime data"
+  "sha256": "1d40285995ef1a46f23a2d9a0831d4fa8e554b12776bfb4bfd0725e69bc14c17",
+  "description": "Sanitized complete website source"
 }

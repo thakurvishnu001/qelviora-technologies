@@ -1,15 +1,9 @@
 # Qelviora Technologies
 
-Complete website source is in website-source.zip. The build script checks the archive SHA-256 and extracts it into app/ without external dependencies.
+Sanitized source is in website-source.zip. Build verifies its checksum and extracts app/. Use Node 22.15+, npm run build, npm start.
 
-## Run
-Use Node 22.15+. Run npm run build, then npm start. For local admin setup, run npm run admin:setup. No administrator password or database is included.
+Render Free: build npm run build, start npm start, health /healthz. APP_URL is the assigned HTTPS origin. Set TURSO_DATABASE_URL and TURSO_AUTH_TOKEN privately for persistent accounts, form records and attachments. Configure EMAIL_SERVER and EMAIL_FROM for the verified sender. Brevo supports port 2525 with required STARTTLS; BREVO_API_KEY enables HTTPS email delivery.
 
-## Render
-Deploy as a Node Web Service: build command npm run build, start command npm start, health check /healthz. Set HOST=0.0.0.0, NODE_ENV=production and APP_URL to the assigned public HTTPS origin. The render.yaml describes a Starter service and 1 GB disk; review hosting costs before deploying. Set QELVIORA_DATABASE_PATH=/var/data/qelviora.sqlite and UPLOAD_DIRECTORY=/var/data/uploads. Configure private EMAIL_SERVER and EMAIL_FROM to deliver enquiry notifications. Without SMTP, emails remain queued.
+Initial owner setup: ADMIN_BOOTSTRAP_EMAIL creates an account requiring an email password reset before sign-in. Existing passwords are not replaced. Remove this setting after initial setup. No passwords, keys or private account data are included.
 
-Create the production administrator using npm run admin:setup in the Render service shell. Localhost admin credentials are not transferred. Review app/DEPLOYMENT.md and app/README.md for details.
-
-Current training fees: 6-month programs ₹10,499; 4-month programs ₹7,499. Communication Skills retains ₹7,999 total and ₹999 registration. Payment proofs require transaction ID and receipt, with admin approval.
-
-Validated browser syntax, login changes, QR/UPI amount generation and program application links. Deployment and real SMTP delivery still require live verification.
+Fixture tests cover signup, login, single-use password reset, session revocation, database persistence, attachments and email retry behavior.
